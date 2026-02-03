@@ -13,6 +13,8 @@ This repository contains the VHDL code for a multiplier using the Booth radix-4 
 > [!NOTE]
 > The repository includes the testbench used for functional verification of the proposed architecture using the Xilinx Vivado Design Suite simulation environment. The simulation results confirm the correctness of the multiplication operations for all permitted input combinations, i.e., the N-bit signed multiply and the 8-bit or 16-bit signed multiplier.
 
+## Theorical Architectural Overview
+
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.
 2. **RCA Block:** Pre-calculation of the possible values ​​of the partial products as a function of the encoding using the Radix-4 Booth algorithm.
