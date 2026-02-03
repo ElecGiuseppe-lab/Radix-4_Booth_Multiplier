@@ -25,6 +25,8 @@ The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefl
 
 ### Radix-4 Booth Encoder
 
+It implements Booth's radix-4 algorithm which consists of dividing the multiplier into triplets of bits and assigning them an encoding digit which will correspond to a specific partial product obtained as the product between the encoding digit and the multiplicand.
+
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
