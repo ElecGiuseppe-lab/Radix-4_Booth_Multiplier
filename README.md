@@ -1,5 +1,6 @@
 # Radix-4 Modified Booth's Multiplier (MBM)
-
+<!-- element with id at top of page -->
+<div id="back-to-top"></div>
 
 ## Abstract
 
@@ -12,4 +13,12 @@ This repository contains the VHDL code for a multiplier using the Booth radix-4 
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.
 2. **RCA Block:** Pre-calculation of the possible values ​​of the partial products as a function of the encoding using the Radix-4 Booth algorithm.
-3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result. 
+3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
+
+
+
+
+<!-- The link you click to go back to top -->
+<div align="right">
+  &#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a>
+</div>
