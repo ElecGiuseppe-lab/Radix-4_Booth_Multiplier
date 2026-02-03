@@ -1,4 +1,4 @@
-# Modified Booth Multiplier or MBM (Radix-4 Booth Algorithm)
+# Radix-4 Modified Booth's Multiplier
 
 
 ## Abstract
