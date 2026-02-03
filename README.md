@@ -11,7 +11,7 @@ The radix-4 modified Booth's multiplier (MBM), reduces the number of partial pro
 This repository contains the VHDL code for a multiplier using the Booth radix-4 algorithm, taking as inputs two signed numbers, X<sub>N-bit, multiplicand</sub> &times; Y<sub>8-bit or 16-bit, multiplier</sub>, in 2's complement notation and returning as output a signed number, Z<sub>(N+8 or 16)-bit</sub>, in 2's complement notation. The Booth radix-4 algorithm computes the two inputs into 8/2 or 16/2 partial products. These partial products are passed through an Wallace tree adder structure, which returns two final partial products. These two partial products are then subjected to a further carry-free addition (CLA adder) to produce the final result.  
 
 > [!NOTE]
-> The repository includes the testbench used for functional verification of the proposed architecture using the Xilinx Vivado Design Suite simulation environment. The simulation results confirm the correctness of the multiplication operations for all permitted input combinations, i.e., the N-bit signed multiply and the 8-bit or 16-bit signed multiplier.
+> The repository includes the testbench used for functional verification of the proposed architecture using the Xilinx Vivado Design Suite simulation environment. The simulation results confirm the correctness of the multiplication operations for all permitted input combinations, i.e., the N-bit signed multiplicand and the 8-bit or 16-bit signed multiplier.
 
 ## Theory
 
