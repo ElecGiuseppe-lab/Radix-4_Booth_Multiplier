@@ -23,13 +23,11 @@ The multiplication operation typically involves three main processes:
 Radix-4 Booth encoding algorithm is used to generate partial products. The Wallace tree structure allows for the compression of the partial products, and a CLA adder adds the two partial products output from the tree structure to obtain the final product.  
 The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefly introduced below.
 
-### Radix-4 Booth Encoder
+### Radix-4 Booth Encoder and Decoder
 
-It implements radix-4 Booth algorithm which consists of dividing the multiplier into triplets of bits and assigning them an encoding digit which will correspond to a specific partial product obtained as the product between the encoding digit and the multiplicand.
+They implement radix-4 Booth algorithm which consists of dividing the multiplier into triplets of bits and assigning them an encoding digit which will correspond to a specific partial product obtained as the product between the encoding digit and the multiplicand.
 
-### Radix-4 Booth decoder
-
-This is a 5:1 multiplexer that receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit used as a selector.
+The decoder, i.e. a 5:1 multiplexer (MUX), receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit output by the encoder and used as a MUX selector.
 
 ## Theorical Architectural Overview
 
