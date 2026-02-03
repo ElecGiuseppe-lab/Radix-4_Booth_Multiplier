@@ -20,12 +20,12 @@ The multiplication operation typically involves three main processes:
 2. **Compression or accumulation of partial products:** using a specific tree structure to condense multiple generated partial products into two.
 3. **Summation:** Using an adder to add the two partial products obtained from compression, the final product is obtained.  
 
-Booth radix-4 encoding algorithm is used to generate partial products. The Wallace tree structure allows for the compression of the partial products, and a CLA adder adds the two partial products output from the tree structure to obtain the final product.  
+Radix-4 Booth encoding algorithm is used to generate partial products. The Wallace tree structure allows for the compression of the partial products, and a CLA adder adds the two partial products output from the tree structure to obtain the final product.  
 The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefly introduced below.
 
 ### Radix-4 Booth Encoder
 
-It implements Booth's radix-4 algorithm which consists of dividing the multiplier into triplets of bits and assigning them an encoding digit which will correspond to a specific partial product obtained as the product between the encoding digit and the multiplicand.
+It implements radix-4 Booth algorithm which consists of dividing the multiplier into triplets of bits and assigning them an encoding digit which will correspond to a specific partial product obtained as the product between the encoding digit and the multiplicand.
 
 ## Theorical Architectural Overview
 
