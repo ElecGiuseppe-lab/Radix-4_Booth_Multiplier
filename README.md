@@ -17,8 +17,9 @@ This repository contains the VHDL code for a multiplier using the Booth radix-4 
 
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.
-2. **RCA Block:** Pre-calculation of the possible values ​​of the partial products as a function of the encoding using the Radix-4 Booth algorithm.
+2. **RCA Module:** Pre-calculation of the possible values ​​of the partial products as a function of the encoding using the Radix-4 Booth algorithm.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
+4. **Pipeline Registers:** Mainly used to minimize power dissipation attributed to spurious signal switching (i.e., glitches).
     
   
     
