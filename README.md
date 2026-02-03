@@ -1,4 +1,4 @@
-# Radix-4 Modified Booth's Multiplier
+# Radix-4 Modified Booth's Multiplier (MBM)
 
 
 ## Abstract
