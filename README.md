@@ -8,7 +8,7 @@ Adders and multipliers are fundamental components of many circuits. Specifically
 
 The radix-4 modified Booth multiplier (MBM), reduces the number of partial products by 50%. This increases speed, reduces power consumption and saves space on the multiplier layout. Furthermore, the use of Carry Save adders, arranged in Wallace tree structure, for the accumulation of the partial products and a CLA adder, used as the last stage of the adder tree for the final addition, ensures further improvements in the use of logical resources (greater savings in occupied area) and performance in terms of speed and power compared to conventional multipliers.  
 
-This repository contains the VHDL code for a multiplier using the Booth radix-4 algorithm, taking as inputs two signed numbers, X<sub>N-bit, multiplicand</sub> &times; Y<sub>8-bit or 16-bit, multiplier</sub>, in 2's complement notation and returning as output a signed number, Z<sub>(N+8 or 16)-bit</sub>, in 2's complement notation. The Booth radix-4 algorithm computes the two inputs into 8/2 or 16/2 partial products. These partial products are passed through an Wallace tree adder structure, which returns two final partial products. These two partial products are then subjected to a further carry-free addition (CLA adder) to produce the final result.  
+This repository contains the VHDL code for a multiplier using the Booth radix-4 algorithm, taking as inputs two signed numbers, A<sub>N-bit, multiplicand</sub> &times; B<sub>8-bit or 16-bit, multiplier</sub>, in 2's complement notation and returning as output a signed number, Ris<sub>(N+8 or 16)-bit</sub>, in 2's complement notation. The radix-4 Booth algorithm computes the two inputs into 8/2 or 16/2 partial products. These partial products are passed through an Wallace tree adder structure, which returns two final partial products. These two partial products are then subjected to a further carry-free addition (CLA adder) to produce the final result.  
 
 > [!NOTE]
 > The repository includes the testbench used for functional verification of the proposed architecture using the Xilinx Vivado Design Suite simulation environment. The simulation results confirm the correctness of the multiplication operations for all permitted input combinations, i.e., the N-bit signed multiplicand and the 8-bit or 16-bit signed multiplier.
@@ -24,8 +24,12 @@ Radix-4 Booth encoding algorithm is used to generate partial products. The Walla
 The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefly introduced below.
 
 ### Radix-4 Booth Encoder and Decoder
+They contribute to the generation of partial products.  
+The encoder implements the radix-4 Booth algorithm, according to which the multiplier (B) is partitioned into groups of three adjacent bits, with each preceding and succeeding group overlapping by one bit position. An auxiliary bit '0' is added to the far right of B, acting as the least significant bit (LSB), to complete the last triplet. Each triplet is associated with an encoding digit, used to determine the corresponding partial product, obtained by multiplying the digit itself by the multiplicand (A).  
+The advantage of radix-4 Booth encoding algorithm lies in its ability to halve the number of partial products generated, reducing computational complexity and, consequently, processing time. In addition to its high-speed characteristics, this algorithm also features low power consumption.
 
-They implement radix-4 Booth algorithm which consists of dividing the multiplier into triplets of bits and assigning them an encoding digit which will correspond to a specific partial product obtained as the product between the encoding digit and the multiplicand.
+> [!NOTE]
+> Knowing the value of A, it is possible to predetermine all possible values ​​of the partial products using a simple RCA or CLA adder.
 
 The decoder, i.e. a 5:1 multiplexer (MUX), receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit output by the encoder and used as a MUX selector.
 
