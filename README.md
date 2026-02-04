@@ -29,6 +29,8 @@ They contribute to the generation of partial products.
 
 The **encoder** implements the radix-4 Booth algorithm, according to which the multiplier (B) is partitioned into groups of three adjacent bits, with each preceding and succeeding group overlapping by one bit position. It is possible to identify up to 2<sup>3</sup> = 8 different groups. An auxiliary bit '0' is added to the far right of B, acting as the least significant bit (LSB), to complete the last triplet.  
 
+![alt text]()
+
 Each triplet is associated with an encoding digit, one of {-2, -1, 0, 1, 2}, used to determine the corresponding partial product, obtained by multiplying the digit itself by the multiplicand (A).  
 The advantage of radix-4 Booth encoding algorithm lies in its ability to halve the number of partial products generated, reducing computational complexity and, consequently, processing time. In addition to its high-speed characteristics, this algorithm also features low power consumption.
 
@@ -63,19 +65,20 @@ The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pr
 
 ### Wallace Tree Structure
 
+![Compressor 3:2]()
 
+![Wallace Tree Structure]()
 
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.  
-To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "modulus and sign" representation (MSB indicates the sign, while the other two bits quantify the modulus). This        combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in dynamic power dissipation.
-
+To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "**modulus and sign**" representation (MSB indicates the sign, while the other two bits quantify the modulus). This       combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in dynamic power dissipation.
 2. **RCA Module:** To preliminarily calculate the partial products `-A`.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
 4. **Pipeline Registers:** Mainly used to minimize power dissipation attributed to spurious signal switching (i.e., glitches).
     
-  
+![Theorical Architectural]() 
     
   
   
