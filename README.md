@@ -102,7 +102,7 @@ The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.  
 To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "<em>modulus and sign</em>" representation (MSB indicates the sign, while the other two bits quantify the modulus). This combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in power dissipation.  
 ![Encoder circuit](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/encoder_combinatorial_logic.png)
-2. **Pre-calculated logic:** To preliminarily calculate all the possible partial products (`ExA` -> `A`, `DA` -> `2A`, `MA` -> `-A`, `MDA` -> `-2A`).
+2. **Pre-calculated logic:** To preliminarily calculate all the possible partial products (`ExA`->`A`, `DA`->`2A`, `MA`->`-A`, `MDA`->`-2A`).
 ![pre-calculation logic](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Pre-calculation_logic.png)
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
 4. **Pipelining:** Adoption of a 3-stage pipeline structure to minimize power dissipation attributed to spurious signal switching (i.e., glitches).
