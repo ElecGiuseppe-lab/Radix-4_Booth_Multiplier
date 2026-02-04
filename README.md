@@ -87,7 +87,7 @@ $$ Number of levels = \frac{log\left( \frac{k}{2} \right)}{log \left(\frac{3}{2}
 
 Where, k is the number of partial products.
 
-## Final Stage Addition
+### Final Stage Addition
 
 This stage is crucial because it involves the addition of large operands, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.
 
