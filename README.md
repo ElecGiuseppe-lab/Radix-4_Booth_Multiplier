@@ -89,7 +89,8 @@ Where, k is the number of partial products.
 
 ### Final Stage Addition
 
-This stage is crucial because it involves the addition of large operands, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.
+This stage is crucial because it involves the addition of large operands, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.  
+The result of the multiplication operation is represented in (N+M)-bits.
 
 > [!NOTE]
 > For the final adder, a CLA adder has been implemented, however, the VHDL code of an RCA adder is provided as an alternative.
