@@ -70,7 +70,7 @@ A 3:2 compressor consists of a chain of FAs that accepts three inputs and genera
 Subsequently, a logical left shift of VR is performed and the VSP is signed-extended so that the two vectors are aligned (this operation costs nothing in terms of time and resources).
 Since the sum and carry bits are computed in parallel due to no carry propagation, the computation time of VSP and VR at each level of the tree structure is equal to that of a single FA.
 
-![3:2 Compressor]()
+![3:2 Compressor](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/3_2_compressor_(CSA).png)
 
 The equations governing the outputs of the 3:2 compressor are shown below.
 
