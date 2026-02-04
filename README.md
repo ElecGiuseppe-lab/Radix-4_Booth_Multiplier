@@ -45,7 +45,7 @@ Regarding the generation of `-A` and `-2A`, shifting `-A` one position to the le
 The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit output by the encoder and used as a MUX selector.
 > [!NOTE]
 > The partial products output by the decoders, before being added, must be left-shifted by an amount equal to the weight of the central bit of the respective triplet and signed extended to align them.
-> The weight of the central bit of each triplet has a step of two, that is, starting from the multiplier LSB (excluding the additional bit '0'): 2^0, 2^2, 2^4, 2^6, 2^8, etc.
+> The weight of the central bit of each triplet has a step of two, that is, starting from the multiplier LSB (excluding the additional bit '0'): 2^{0}, 2^{2}, 2^{4}, 2^{6}, 2^{8}, etc.
 
 To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "modulus and sign" representation (MSB indicates the sign, while the other two bits quantify the modulus). This combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in dynamic power dissipation.
 
