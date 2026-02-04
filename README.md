@@ -21,7 +21,7 @@ The multiplication operation typically involves three main processes:
 3. **Summation:** Using an adder to add the two partial products obtained from compression, the final product is obtained.  
 
 Radix-4 Booth encoding algorithm is used to generate partial products. The Wallace tree structure allows for the compression of the partial products, and a CLA adder adds the two partial products output from the tree structure to obtain the final product.  
-The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefly introduced below.
+The principles of Booth radix-4 algorithm and the Wallace tree scheme with final adder are briefly introduced below.
 
 ### Radix-4 Booth Encoder and Decoder
 
@@ -66,7 +66,7 @@ The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pr
 ### Wallace Tree Structure
 
 The Wallace tree uses Carry Save adders (3:2 compressor), rather than Ripple Carry adders, to accumulate partial products.  
-A 3:2 compressor consists of a chain of FAs that accepts three inputs and generates two outputs: a partial sum vector (VSP) and a carry vector (VR). Each sum bit is computed without waiting for the carry bit to propagate, which is instead output.  
+A 3:2 compressor, as shown in the figure below, consists of a chain of FAs that accepts three inputs and generates two outputs: a partial sum vector (VSP) and a carry vector (VR). Each sum bit is computed without waiting for the carry bit to propagate, which is instead output.  
 Subsequently, a logical left shift of VR is performed and the VSP is signed-extended so that the two vectors are aligned (this operation costs nothing in terms of time and resources).
 Since the sum and carry bits are computed in parallel due to no carry propagation, the computation time of VSP and VR at each level of the tree structure is equal to that of a single FA.
 
@@ -74,16 +74,33 @@ Since the sum and carry bits are computed in parallel due to no carry propagatio
 
 The equations governing the outputs of the 3:2 compressor are shown below.
 
-Sum<sub>i</sub> = A<sub>i</sub> <em>xor</em> B<sub>i</sub> <em>xor</em> C<sub>i</sub>
+Sum<sub>i</sub> = A<sub>i</sub> <em>xor</em> B<sub>i</sub> <em>xor</em> C<sub>i</sub>  
 Carry<sub>i</sub> = (A<sub>i</sub> <em>xand</em> B<sub>i</sub>) <em>or</em> (A<sub>i</sub> <em>xand</em> C<sub>i</sub>) <em>or</em> (B<sub>i</sub> <em>xand</em> C<sub>i</sub>)
 
-![Wallace Tree Structure]()
+The following figure illustrates the structure of a typical 4-input Wallace adder tree.
+
+![Wallace Tree Structure](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Wallace_tree_structure.png)
+
+The number of levels in the Wallace tree using 3:2 compressors can be approximately given as:
+
+$$ Number of levels = \frac{log\left( \frac{k}{2} \right)}{log \left(\frac{3}{2} \right)}$$
+
+Where, k is the number of partial products.
+
+### Final Stage Addition
+
+This stage is crucial because it involves the addition of large operands, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.  
+
+> [!NOTE]
+> For the final adder, a CLA adder has been implemented, however, the VHDL code of an RCA adder is provided as an alternative.
+
+The result of the multiplication operation is represented in (N+M)-bits.
 
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.  
-To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "**modulus and sign**" representation (MSB indicates the sign, while the other two bits quantify the modulus). This       combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in power dissipation.
+To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "<em>modulus and sign</em>" representation (MSB indicates the sign, while the other two bits quantify the modulus). This       combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in power dissipation.
 2. **Pre-calculated logic:** To preliminarily calculate all the possible partial products.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
 4. **Pipelining:** Adoption of a 3-stage pipeline structure to minimize power dissipation attributed to spurious signal switching (i.e., glitches).
