@@ -29,7 +29,7 @@ They contribute to the generation of partial products.
 
 The **encoder** implements the radix-4 Booth algorithm, according to which the multiplier (B) is partitioned into groups of three adjacent bits, with each preceding and succeeding group overlapping by one bit position. It is possible to identify up to 2<sup>3</sup> = 8 different groups. An auxiliary bit '0' is added to the far right of B, acting as the least significant bit (LSB), to complete the last triplet.  
 
-![alt text]()
+![alt text](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/triplets_bits.png)
 
 Each triplet is associated with an encoding digit, one of {-2, -1, 0, 1, 2}, used to determine the corresponding partial product, obtained by multiplying the digit itself by the multiplicand (A).  
 The advantage of radix-4 Booth encoding algorithm lies in its ability to halve the number of partial products generated, reducing computational complexity and, consequently, processing time. In addition to its high-speed characteristics, this algorithm also features low power consumption.
