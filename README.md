@@ -83,7 +83,7 @@ The following figure illustrates the structure of a typical 4-input Wallace adde
 
 The number of levels in the Wallace tree using 3:2 compressors can be approximately given as:
 
-$$ Number of levels = \frac{log\left( \frac{k}{2} \right)}{log \left(\frac{3}{2} \right)}$$
+$$Number of levels = \frac{log\left( \frac{k}{2} \right)}{log \left(\frac{3}{2} \right)}$$
 
 Where, k is the number of partial products.
 
