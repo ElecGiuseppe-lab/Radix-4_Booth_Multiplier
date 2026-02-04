@@ -34,16 +34,16 @@ The advantage of radix-4 Booth encoding algorithm lies in its ability to halve t
 
 The following table shows the rules for generating the encoding digits of the respective triplets and the corresponding partial products.  
 
-| B_{i+1} B_{i} B_{i-1} | Audio Quality         | Available Sources                            |
-| --------------------- | --------------------- | -------------------------------------------- |
-| 0 0 0                 | 128 kbps MP3 or AAC   | Deezer, Tidal, SoundCloud (most of the time) |
-| 0 0 1                 | 320 kbps MP3 or AAC   | Deezer, Tidal, Qobuz, SoundCloud (rarely)    |
-| 0 1 0                 | 16 bit, 44.1 kHz (CD) | Deezer, Tidal, Qobuz, SoundCloud (rarely)    |
-| 0 1 1                 | 24 bit, ≤ 96 kHz      | Tidal (MQA), Qobuz, SoundCloud (rarely)      |
-| 1 0 0                 | 24 bit, ≤ 192 kHz     | Qobuz                                        |
-| 1 0 1                 | 24 bit, ≤ 192 kHz     | Qobuz                                        |
-| 1 1 0                 | 24 bit, ≤ 192 kHz     | Qobuz                                        |
-| 1 1 1                 | 24 bit, ≤ 192 kHz     | Qobuz                                        |
+| B<sub>i+1</sub> B<sub>i</sub> B<sub>i-1</sub> | Recorded Digits | Available Sources                            |
+| --------------------------------------------- | --------------- | -------------------------------------------- |
+|                     0 0 0                     |        0        | Deezer, Tidal, SoundCloud (most of the time) |
+|                     0 0 1                     |        1        | Deezer, Tidal, Qobuz, SoundCloud (rarely)    |
+|                     0 1 0                     |        1        | Deezer, Tidal, Qobuz, SoundCloud (rarely)    |
+|                     0 1 1                     |        2        | Tidal (MQA), Qobuz, SoundCloud (rarely)      |
+|                     1 0 0                     |       -2        | Qobuz                                        |
+|                     1 0 1                     |       -1        | Qobuz                                        |
+|                     1 1 0                     |       -1        | Qobuz                                        |
+|                     1 1 1                     |        0        | Qobuz                                        |
 
 As can be seen from the table, there are five categories of partial product in the Radix-4 Booth encoding scheme: `0`, `+A`, `+2A`, `-A`, and `-2A`.  
 Among these:  
