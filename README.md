@@ -47,6 +47,10 @@ The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pr
 > The partial products output by the decoders, before being added, must be left-shifted by an amount equal to the weight of the central bit of the respective triplet and signed extended to align them.
 > The weight of the central bit of each triplet has a step of two, that is, starting from the multiplier LSB (excluding the additional bit '0'): 2<sup>0</sup>, 2<sup>2</sup>, 2<sup>4</sup>, 2<sup>6</sup>, 2<sup>8</sup>, etc.
 
+### Wallace Tree Structure
+
+
+
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
