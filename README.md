@@ -40,7 +40,7 @@ The following table shows the rules for generating the encoding digits of the re
 |                     0 0 1                     |        1        |        A         |
 |                     0 1 0                     |        1        |        A         |
 |                     0 1 1                     |        2        |       2A         |
-|                     1 0 0                     |       -2        |       -2A        |
+|                     1 0 0                     |       -2        |      -2A         |
 |                     1 0 1                     |       -1        |       -A         |
 |                     1 1 0                     |       -1        |       -A         |
 |                     1 1 1                     |        0        |        0         |
