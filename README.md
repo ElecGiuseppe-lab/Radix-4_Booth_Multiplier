@@ -34,7 +34,13 @@ The advantage of radix-4 Booth encoding algorithm lies in its ability to halve t
 > Knowing the value of A, it is possible to predetermine all possible values ​​of the partial products.
 
 The following table shows the rules for generating the encoding digits of the respective triplets and the corresponding partial products.  
-As can be seen from the table, there are five categories of partial product in the Radix-4 Booth encoding scheme: `0`, `+A`, `+2A`, `-A`, and `-2A`. Among these, `0` is the constant term, `+A` is the multiplicand, and `+2A` is obtained by shifting `+A` one bit to the left. These quantities are all readily available. Regarding the generation of `-A` and `-2A`, shifting `-A` one position to the left yields `-2A`. Generating the operand `-A` requires an additional circuit resource, typically an RCA or CLA adder. Therefore, for an N-bit multiplicand, (N+2)-bits are needed to represent the generic partial product.
+As can be seen from the table, there are five categories of partial product in the Radix-4 Booth encoding scheme: `0`, `+A`, `+2A`, `-A`, and `-2A`.  
+Among these:  
+- `0` is the constant term.
+- `+A` is the multiplicand.
+- `+2A` is obtained by shifting `+A` one bit to the left.
+These quantities are all readily available.
+Regarding the generation of `-A` and `-2A`, shifting `-A` one position to the left yields `-2A`. Generating the operand `-A` requires an additional circuit resource, typically an RCA or CLA adder. Therefore, for an N-bit multiplicand, (N+2)-bits are needed to represent the generic partial product.
 
 The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit output by the encoder and used as a MUX selector.
 
