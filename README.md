@@ -34,16 +34,16 @@ The advantage of radix-4 Booth encoding algorithm lies in its ability to halve t
 
 The following table shows the rules for generating the encoding digits of the respective triplets and the corresponding partial products.  
 
-| B<sub>i+1</sub> B<sub>i</sub> B<sub>i-1</sub> | Recorded Digits | Available Sources                            |
-| :-------------------------------------------: | :-------------: | -------------------------------------------- |
-|                     0 0 0                     |        0        | Deezer, Tidal, SoundCloud (most of the time) |
-|                     0 0 1                     |        1        | Deezer, Tidal, Qobuz, SoundCloud (rarely)    |
-|                     0 1 0                     |        1        | Deezer, Tidal, Qobuz, SoundCloud (rarely)    |
-|                     0 1 1                     |        2        | Tidal (MQA), Qobuz, SoundCloud (rarely)      |
-|                     1 0 0                     |       -2        | Qobuz                                        |
-|                     1 0 1                     |       -1        | Qobuz                                        |
-|                     1 1 0                     |       -1        | Qobuz                                        |
-|                     1 1 1                     |        0        | Qobuz                                        |
+| B<sub>i+1</sub> B<sub>i</sub> B<sub>i-1</sub> | Recorded Digits | Partial Products |
+| :-------------------------------------------: | :-------------: | :--------------: |
+|                     0 0 0                     |        0        |        0         |
+|                     0 0 1                     |        1        |        A         |
+|                     0 1 0                     |        1        |        A         |
+|                     0 1 1                     |        2        |       2A         |
+|                     1 0 0                     |       -2        |      -2A         |
+|                     1 0 1                     |       -1        |       -A         |
+|                     1 1 0                     |       -1        |       -A         |
+|                     1 1 1                     |        0        |        0         |
 
 As can be seen from the table, there are five categories of partial product in the Radix-4 Booth encoding scheme: `0`, `+A`, `+2A`, `-A`, and `-2A`.  
 Among these:  
