@@ -47,12 +47,12 @@ The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pr
 > The partial products output by the decoders, before being added, must be left-shifted by an amount equal to the weight of the central bit of the respective triplet and signed extended to align them.
 > The weight of the central bit of each triplet has a step of two, that is, starting from the multiplier LSB (excluding the additional bit '0'): 2<sup>0</sup>, 2<sup>2</sup>, 2<sup>4</sup>, 2<sup>6</sup>, 2<sup>8</sup>, etc.
 
-To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "modulus and sign" representation (MSB indicates the sign, while the other two bits quantify the modulus). This combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in dynamic power dissipation.
-
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
-1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.
+1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.  
+To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "modulus and sign" representation (MSB indicates the sign, while the other two bits quantify the modulus). This        combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in dynamic power dissipation.
+
 2. **RCA Module:** To preliminarily calculate the partial products `-A`.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
 4. **Pipeline Registers:** Mainly used to minimize power dissipation attributed to spurious signal switching (i.e., glitches).
