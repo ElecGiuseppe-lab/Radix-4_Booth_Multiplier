@@ -21,7 +21,7 @@ The multiplication operation typically involves three main processes:
 3. **Summation:** Using an adder to add the two partial products obtained from compression, the final product is obtained.  
 
 Radix-4 Booth encoding algorithm is used to generate partial products. The Wallace tree structure allows for the compression of the partial products, and a CLA adder adds the two partial products output from the tree structure to obtain the final product.  
-The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefly introduced below.
+The principles of Booth radix-4 algorithm and the Wallace tree scheme with final adder are briefly introduced below.
 
 ### Radix-4 Booth Encoder and Decoder
 
@@ -86,6 +86,13 @@ The number of levels in the Wallace tree using 3:2 compressors can be approximat
 $$ Number of levels = \frac{log\left( \frac{k}{2} \right)}{log \left(\frac{3}{2} \right)}$$
 
 Where, k is the number of partial products.
+
+## Final Stage Addition
+
+This stage is crucial because it involves the addition of large operands, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.
+
+> [!NOTE]
+> For the final adder, a CLA adder has been implemented, however, the VHDL code of an RCA adder is provided as an alternative.
 
 ## Theorical Architectural Overview
 
