@@ -81,6 +81,12 @@ The following figure illustrates the structure of a typical 4-input Wallace adde
 
 ![Wallace Tree Structure](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Wallace_tree_structure.png)
 
+The number of levels in the Wallace tree using 3:2 compressors can be approximately given as:
+
+$$ Number of levels = log(k \over 2) \over log(3 \over 2)$$
+
+Where, k is the number of partial products.
+
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
