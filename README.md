@@ -24,20 +24,25 @@ Radix-4 Booth encoding algorithm is used to generate partial products. The Walla
 The principles of Booth radix-4 algorithm and the Wallace tree scheme are briefly introduced below.
 
 ### Radix-4 Booth Encoder and Decoder
+
 They contribute to the generation of partial products.  
-The encoder implements the radix-4 Booth algorithm, according to which the multiplier (B) is partitioned into groups of three adjacent bits, with each preceding and succeeding group overlapping by one bit position. An auxiliary bit '0' is added to the far right of B, acting as the least significant bit (LSB), to complete the last triplet. Each triplet is associated with an encoding digit, used to determine the corresponding partial product, obtained by multiplying the digit itself by the multiplicand (A).  
+
+The **encoder** implements the radix-4 Booth algorithm, according to which the multiplier (B) is partitioned into groups of three adjacent bits, with each preceding and succeeding group overlapping by one bit position. An auxiliary bit '0' is added to the far right of B, acting as the least significant bit (LSB), to complete the last triplet. Each triplet is associated with an encoding digit, one of {-2, -1, 0, 1, 2}, used to determine the corresponding partial product, obtained by multiplying the digit itself by the multiplicand (A).  
 The advantage of radix-4 Booth encoding algorithm lies in its ability to halve the number of partial products generated, reducing computational complexity and, consequently, processing time. In addition to its high-speed characteristics, this algorithm also features low power consumption.
 
 > [!NOTE]
-> Knowing the value of A, it is possible to predetermine all possible values ​​of the partial products using a simple RCA or CLA adder.
+> Knowing the value of A, it is possible to predetermine all possible values ​​of the partial products.
 
-The decoder, i.e. a 5:1 multiplexer (MUX), receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit output by the encoder and used as a MUX selector.
+The following table shows the rules for generating the encoding digits of the respective triplets and the corresponding partial products.  
+As can be seen from the table, there are five categories of partial product in the Radix-4 Booth encoding scheme: `0`, `+A`, `+2A`, `-A`, and `-2A`. Among these, `0` is the constant term, `+A` is the multiplicand, and `+2A` is obtained by shifting `+A` one bit to the left. These quantities are all readily available. Regarding the generation of `-A` and `-2A`, shifting `-A` one position to the left yields `-2A`. Generating the operand `-A` requires an additional circuit resource, typically an RCA or CLA adder. Therefore, for an N-bit multiplicand, (N+2)-bits are needed to represent the generic partial product.
+
+The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pre-calculated partial products and returns as output the partial product as a function of the encoding digit output by the encoder and used as a MUX selector.
 
 ## Theorical Architectural Overview
 
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.
-2. **RCA Module:** Pre-calculation of the possible values ​​of the partial products as a function of the encoding using the Radix-4 Booth algorithm.
+2. **RCA Module:** To preliminarily calculate the partial products `-A`.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
 4. **Pipeline Registers:** Mainly used to minimize power dissipation attributed to spurious signal switching (i.e., glitches).
     
