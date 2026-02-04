@@ -79,7 +79,7 @@ Carry<sub>i</sub> = (A<sub>i</sub> <em>xand</em> B<sub>i</sub>) <em>or</em> (A<s
 
 The following figure illustrates the structure of a typical 4-input Wallace adder tree.
 
-![Wallace Tree Structure]()
+![Wallace Tree Structure](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Wallace_tree_structure.png)
 
 ## Theorical Architectural Overview
 
