@@ -18,7 +18,7 @@ This repository contains the VHDL code for a multiplier using the Booth radix-4 
 The multiplication operation typically involves three main processes:
 1. **Generation of partial products:** Performing the multiplication operation between the "multiplicand" and the "multiplier" produces intermediate data called "partial products."
 2. **Compression or accumulation of partial products:** using a specific tree structure to condense multiple generated partial products into two.
-3. **Summation:** Using an adder to add the two partial products obtained from compression, the final product is obtained.  
+3. **Final addition:** Using an adder to add the two partial products obtained from compression, the final product is obtained.  
 
 Radix-4 Booth encoding algorithm is used to generate partial products. The Wallace tree structure allows for the compression of the partial products, and a CLA adder adds the two partial products output from the tree structure to obtain the final product.  
 The principles of Booth radix-4 algorithm and the Wallace tree scheme with final adder are briefly introduced below.
