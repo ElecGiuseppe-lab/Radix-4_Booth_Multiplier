@@ -1,10 +1,9 @@
 <!-- element with id at top of page -->
 <div id="back-to-top"></div>
 
-[![GitHub Stars](https://img.shields.io/github/stars/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/stargazers)
+[[GitHub Stars](https://img.shields.io/github/stars/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/stargazers)
 [![GitHub Watchers](https://img.shields.io/github/watchers/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/watchers)
 [![GitHub Forks](https://img.shields.io/github/forks/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/forks)
-![GitHub Commit Activity](https://img.shields.io/github/commit-activity/y/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)
 
 # Radix-4 Modified Booth Multiplier (MBM)
 
