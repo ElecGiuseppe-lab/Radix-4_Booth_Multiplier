@@ -135,6 +135,24 @@ Table below shows the utilization of hardware by the given MBM with pipelining.
 |       Bonded IOB		|    37    |   29.60   |
 |          GCLKs		|     1    |	3.13   |  
   
+## Getting Started For Test
+
+### Prerequisites
+- Xilinx Vivado Design Suite
+- Knowledge of VHDL
+- Basic understanding of signals and systems
+
+### Steps to Run the Project
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
+   ```
+2. Open Vivado and create a new project.
+3. Add the provided VHDL source files (the VHDL source files are located in the `Booth_mult_optDynEn/src` directory).
+4. Add time constraint (the file is located in the `Booth_mult_optDynEn/constrs` directory).
+4. Run synthesis and implementation.
+5. Run post-implementation timing simulation (the corresponding testbench are in the `Booth_mult_optDynEn/sim` directory).
+
   
 <!-- The link you click to go back to top -->
 <div align="right">
