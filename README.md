@@ -107,7 +107,7 @@ To generate the corresponding encoded digit, the encoder was implemented with a 
 > [!NOTE]
 > The partial product '0' is processed directly in the decoder module as it is a constant.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
-4. **Pipelining:** Adoption of a 3-stage pipeline structure to minimize power dissipation attributed to spurious signal switching (i.e., glitches) to reduce the critical path.  
+4. **Pipelining:** Adoption of a 3-stage pipeline structure to minimize power dissipation attributed to spurious signal switching (i.e., glitches) and to reduce the critical path.  
 
 The following figure illustrates the entire architecture of the radix-4 Booth multiplier, excluding the pipeline stages.
 
