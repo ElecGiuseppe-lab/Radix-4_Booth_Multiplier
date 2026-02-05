@@ -13,6 +13,24 @@ This repository contains the VHDL code for a multiplier using the Booth radix-4 
 > [!NOTE]
 > The repository includes the testbench used for functional verification of the proposed architecture using the Xilinx Vivado Design Suite simulation environment. The simulation results confirm the correctness of the multiplication operations for all permitted input combinations, i.e., the N-bit signed multiplicand and M-bit signed multiplier.
 
+## How It Works
+
+```mermaid
+flowchart TD
+    A(Multiplicand) --> C[Booth Encoder]
+    B(Multiplier) --> C
+    C --> D(Partial Products)
+    D --> E[Wallace Tree Reducer]
+    E --> F[Carry Propagate Adder]
+    F --> G(Output Product)
+```
+
+1. **Inputs**: Multiplicand and Multiplier (both signed/unsigned).
+2. **Booth Encoder and Decoder**: Generates encoded partial products from the multiplier.
+3. **Wallace Tree**: Parallel reduction of partial products using layers of adders (e.g., carry-save adder).
+4. **Final Adder**: The last two rows are summed using a fast adder (e.g., carry-lookahead adder).
+5. **Output**: Accurate product.
+
 ## Theory
 
 The multiplication operation typically involves three main processes:
