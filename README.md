@@ -148,7 +148,7 @@ Table below shows the utilization of hardware by the given MBM with pipelining.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
+   git clone https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier.git
    ```
 2. Open Vivado and create a new project.
 3. Add the provided VHDL source files (the VHDL source files are located in the `Booth_mult_optDynEn/src` directory).
