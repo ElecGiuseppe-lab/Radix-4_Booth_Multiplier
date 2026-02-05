@@ -18,7 +18,7 @@ This repository contains the VHDL code for a multiplier using the Booth radix-4 
 
 ```mermaid
 flowchart TD
-    A(Multiplicand) --> C[Booth Encoder]
+    A(Multiplicand) --> C[Booth Encoder and Decoder]
     B(Multiplier) --> C
     C --> D(Partial Products)
     D --> E[Wallace Tree Reducer]
