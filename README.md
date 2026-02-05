@@ -1,6 +1,7 @@
-# Radix-4 Modified Booth Multiplier (MBM)
 <!-- element with id at top of page -->
 <div id="back-to-top"></div>
+
+# Radix-4 Modified Booth Multiplier (MBM)
 
 ## Abstract
 
@@ -47,7 +48,7 @@ They contribute to the generation of partial products.
 
 The **encoder** implements the radix-4 Booth algorithm, according to which the multiplier (B) is partitioned into groups of three adjacent bits, with each preceding and succeeding group overlapping by one bit position. It is possible to identify up to 2<sup>3</sup> = 8 different groups. An auxiliary bit '0' is added to the far right of B, acting as the least significant bit (LSB), to complete the last triplet.  
 
-![alt text](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/triplets_bits.png)
+![triplets_bits.png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/triplets_bits.png)
 
 Each triplet is associated with an encoding digit, one of {-2, -1, 0, 1, 2}, used to determine the corresponding partial product, obtained by multiplying the digit itself by the multiplicand (A).  
 The advantage of radix-4 Booth encoding algorithm lies in its ability to halve the number of partial products generated, reducing computational complexity and, consequently, processing time. In addition to its high-speed characteristics, this algorithm also features low power consumption.
@@ -88,7 +89,7 @@ A 3:2 compressor, as shown in the figure below, consists of a chain of FAs that 
 Subsequently, a logical **left shift of VR** is performed and the **VSP is signed-extended** so that the two vectors are aligned (this operation costs nothing in terms of time and resources).
 Since the sum and carry bits are computed in parallel due to no carry propagation, the computation time of VSP and VR at each level of the tree structure is equal to that of a single FA.
 
-![3:2 Compressor](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/3_2_compressor_(CSA).png)
+![3_2_compressor_(CSA).png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/3_2_compressor_(CSA).png)
 
 The equations governing the outputs of the 3:2 compressor are shown below.
 
@@ -97,7 +98,7 @@ Carry<sub>i</sub> = (A<sub>i</sub> <em>xand</em> B<sub>i</sub>) <em>or</em> (A<s
 
 The following figure illustrates the structure of a typical 4-input Wallace adder tree.
 
-![Wallace Tree Structure](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Wallace_tree_structure.png)
+![Wallace_tree_structure.png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Wallace_tree_structure.png)
 
 The number of levels in the Wallace tree using 3:2 compressors can be approximately given as:
 
@@ -119,9 +120,9 @@ The result of the multiplication operation is represented in (N+M)-bits.
 The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.  
 To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "<em>modulus and sign</em>" representation (MSB indicates the sign, while the other two bits quantify the modulus). This combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in power dissipation.  
-![Encoder circuit](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/encoder_combinatorial_logic.png)
+![encoder_combinatorial_logic.png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/encoder_combinatorial_logic.png)
 2. **Pre-calculation logic:** To preliminarily calculate all the possible partial products (`ExA`->`A`, `DA`->`2A`, `MA`->`-A`, `MDA`->`-2A`). An CLA adder is used to generate the partial product `-A`.
-![pre-calculation logic](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Pre-calculation_logic.png)
+![Pre-calculation_logic.png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Pre-calculation_logic.png)
 > [!NOTE]
 > The partial product '0' is processed directly in the decoder module as it is a constant.
 3. **Adder Tree (Wallace tree + CLA adder):** Using a Wallace tree structure, the partial products are added and compressed into two final partial products, which are then used in the final addition via a CLA adder to obtain the final product result.
@@ -129,7 +130,7 @@ To generate the corresponding encoded digit, the encoder was implemented with a 
 
 The following figure illustrates the entire architecture of the radix-4 Booth multiplier, excluding the pipeline stages.
 
-![Theoretical architecture](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/theoretical_architecture.png)
+![theoretical_architecture.png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/theoretical_architecture.png)
 
 ## Verification
 
@@ -141,7 +142,7 @@ The code is synthesized using Pynq-Z2 development board with device selected as 
 
 The results are for the signed and unsigned multiplication of 9-bit multiplicand and 8-bit multiplier depending upon partial product generation by Radix-4 Booth encoder Logic, partial product reduction by 3:2 compressors and final adder addition. The choice of optimum multiplier involves three key factors: Area, propagation delay, reconfiguration time. The MBM reduce the partial products to half to provide the speed advantage. The primary source of propagation delay in circuit is the adder, so the 3:2 compressor used for Wallace tree to add the partial products, the layers of 3:2 compressors is used to decrease the propagation delay is formulated as Wallace Tree.The area utilization depends upon the number of LUT’s (Look Up Table) and SLICES used for synthesizing the code. The **clock period** of **11ns** is produced and the **clock frequency** is **90.91MHz**.
 
-![simulation post-implementation](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/simulation_post_implementation.png)
+![simulation_post_implementation.png](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/simulation_post_implementation.png)
     
 Table below shows the utilization of hardware by the given MBM with pipelining.  
   
