@@ -1,7 +1,7 @@
 <!-- element with id at top of page -->
 <div id="back-to-top"></div>
 
-![GitHub Repo Stars](https://img.shields.io/github/stars/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)
+[![GitHub Repo Stars](https://img.shields.io/github/stars/ElecGiuseppe-lab/Radix-4_Booth_Multiplier?style=for-the-badge)](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/stargazers)
 
 # Radix-4 Modified Booth Multiplier (MBM)
 
