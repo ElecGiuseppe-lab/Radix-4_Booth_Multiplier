@@ -10,7 +10,7 @@ package constants is
     function maxMultiplierWidth(value: integer) return integer;
     function numEncDec(value: integer) return integer;
 
-	constant MULTIPLICAND_WIDTH: integer := 9;
+	constant MULTIPLICAND_WIDTH: integer := 9;		-- set multiplicand width
 	constant SET_MULTIPLIER_WIDTH: integer := 8;	-- Booth multiplier designed for fixed 8-bit or 16-bit signed multiplier (integer values ​​in the range -128 to 127 for 8-bit and -32.768 to 32.767 for 16-bit).	
 	constant MULTIPLIER_WIDTH: integer := maxMultiplierWidth(SET_MULTIPLIER_WIDTH);
     constant NUM_ENCandDEC: integer := numEncDec(MULTIPLIER_WIDTH);			
