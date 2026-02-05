@@ -120,12 +120,20 @@ The design was verified using the `Booth_mult_tb.vhd` testbench. This testbench 
 The code is synthesized using Pynq-Z2 development board with device selected as xc7z0201-clg400.  
 
 ### Simulation and Analysis Post-Implementation
+
+The results are for the signed and unsigned multiplication of 9-bit multiplicand and 8-bit multiplier depending upon partial product generation by Radix-4 Booth encoder Logic, partial product reduction by 3:2 compressors and final adder addition. The choice of optimum multiplier involves three key factors: Area, propagation delay, reconfiguration time. The MBM reduce the partial products to half to provide the speed advantage. The primary source of propagation delay in circuit is the adder, so the 3:2 compressor used for Wallace tree to add the partial products, the layers of 3:2 compressors is used to decrease the propagation delay is formulated as Wallace Tree.The area utilization depends upon the number of LUT’s (Look Up Table) and SLICES used for synthesizing the code. The clock period of 11ns is produced and the clock frequency is 90.91MHz.
+
+![simulation post-implementation](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/simulation_post_implementation.png)
     
 Table below shows the utilization of hardware by the given MBM with pipelining.  
   
-  
-  
-  
+| **Logic Utilization** | **Used** | **Util%** |
+| :-------------------: | :------: | :-------: |
+|		  Slices    	|    45	   |    0.34   |
+|	   LUT as Logic 	|   135    |	0.25   |
+|	  Registers as FF	|    64    |	0.06   |
+|       Bonded IOB		|    37    |   29.60   |
+|          GCLKs		|     1    |	3.13   |  
   
   
 <!-- The link you click to go back to top -->
