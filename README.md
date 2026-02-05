@@ -53,7 +53,7 @@ Among these:
 - `+A` is the multiplicand.
 - `+2A` is obtained by shifting `+A` one bit to the left.
 
-Regarding the generation of `-A` and `-2A`, shifting `-A` one position to the left yields `-2A`. Generating the operand `-A` requires an additional circuit resource, typically an RCA or CLA adder. Therefore, for an N-bit multiplicand, (N+2)-bits are needed to represent the generic partial product: one bit is required to represent `2A` and another is required to represent `-A = not(A) + 1` (signed extension for signed numbers in 2's complement notation).
+Regarding the generation of `-A` and `-2A`, shifting `-A` one position to the left yields `-2A`. Generating the operand `-A` requires an additional circuit resource, namely an adder (RCA, CLA adder or other). Therefore, for an N-bit multiplicand, (N+2)-bits are needed to represent the generic partial product: one bit is required to represent `2A` and another is required to represent `-A = not(A) + 1` (signed extension for signed numbers in 2's complement notation).
 
 > [!NOTE]
 > These quantities are all readily available. In fact, knowing the value of A, it is possible to predetermine all possible values ​​of the partial products.
@@ -102,7 +102,7 @@ The structural block diagram is as follows:
 1. **Booth Encoder and Decoder:** Coding of multiplier triples and generation of partial products.  
 To generate the corresponding encoded digit, the encoder was implemented with a combinational network that uses the "<em>modulus and sign</em>" representation (MSB indicates the sign, while the other two bits quantify the modulus). This combinational circuit allows for circuit-level simplifications; in particular, it ensures a reduction in decoder fan-in (5:1 MUX instead of 8:1 MUX) and, consequently, a reduction in power dissipation.  
 ![Encoder circuit](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/encoder_combinatorial_logic.png)
-2. **Pre-calculated logic:** To preliminarily calculate all the possible partial products (`ExA`->`A`, `DA`->`2A`, `MA`->`-A`, `MDA`->`-2A`).
+2. **Pre-calculated logic:** To preliminarily calculate all the possible partial products (`ExA`->`A`, `DA`->`2A`, `MA`->`-A`, `MDA`->`-2A`). An RCA is used to generate the partial product `-A`.
 ![pre-calculation logic](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/Pre-calculation_logic.png)
 > [!NOTE]
 > The partial product '0' is processed directly in the decoder module as it is a constant.
