@@ -73,15 +73,24 @@ architecture Behavioral of Booth_mult is
         ExA <= (A_int_reg2(N-1)&A_int_reg2(N-1)&A_int_reg2); 
         DA <= (ExA(N downto 0)&'0');
         
-        RCA: entity work.RCA_signed
-            generic map(WidthRCA=>N)
+--        RCA: entity work.RCA_signed
+--            generic map(WidthRCA=>N)
             
-            port map(
-                        A => not_A,
-                        B => one,
-                        Cin=>'0',
-                        S => RCA_MA
-                    );
+--            port map(
+--                        A => not_A,
+--                        B => one,
+--                        Cin=>'0',
+--                        S => RCA_MA
+--                    );
+
+        CLA_adder: entity work.CLA_adder
+                    generic map(WidthCLA=>N)
+                    
+                    port map(
+                                A => not_A,
+                                B => one,
+                                S => RCA_MA
+                            );
                     
         reg_4:  entity work.REG
                     generic map(N => N+1)

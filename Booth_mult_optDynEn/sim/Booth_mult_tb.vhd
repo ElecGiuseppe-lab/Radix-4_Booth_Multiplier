@@ -14,7 +14,7 @@ architecture Behavioral of Booth_mult_TB is
 	signal B_tb : std_logic_vector(MULTIPLIER_WIDTH-1 downto 0) := (others => '0');
     signal Ris_mult_tb : std_logic_vector(MULTIPLICAND_WIDTH+MULTIPLIER_WIDTH-1 downto 0);
     
-    constant clk_period : time := 10 ns;    
+    constant clk_period : time := 11 ns;    
 
 begin
 
@@ -66,6 +66,7 @@ begin
 					begin
 						-- Test with various input values
 						wait until read_en='1';
+					    wait until rising_edge(clk);						
 						
 						report 
 						      "-----------------------------------------------------------------" & character'val(10) &
@@ -78,9 +79,9 @@ begin
 								A_tb <= std_logic_vector(to_signed(i, A_tb'length));
 								B_tb <= std_logic_vector(to_signed(j*2, B_tb'length));	
 												
-								expected := to_signed(i, Ris_mult_tb'length) + to_signed(j*2, Ris_mult_tb'length);												
+								expected := to_signed(i, A_tb'length) * to_signed(j*2, B_tb'length);												
 														
-							    wait for clk_period;  -- Wait for some time for the output to settle																														
+							    wait for 4*clk_period;  -- Wait for some time for the output to settle							    																														
 								
                                 if signed(Ris_mult_tb) /= expected then
                                     error_found := true;
@@ -115,6 +116,6 @@ begin
 						
 						wait;
 						
-				end process stimulus;				
+				end process stimulus;												
 
 end Behavioral;

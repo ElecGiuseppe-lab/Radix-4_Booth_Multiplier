@@ -89,7 +89,7 @@ Where, k is the number of partial products.
 
 ### Final Stage Addition
 
-This stage is crucial because it involves the addition of large operands, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.  
+This stage is crucial because it involves the addition of large operands coming out of the Wallace tree, so at this stage, fast carry propagation adders such as Carry-look Ahead Adder or Carry Skip Adder or Carry Select Adder can be used as per the requirements.  
 
 > [!NOTE]
 > For the final adder, a CLA adder has been implemented, however, the VHDL code of an RCA adder is provided as an alternative.
@@ -111,9 +111,17 @@ To generate the corresponding encoded digit, the encoder was implemented with a 
 
 The following figure illustrates the entire architecture of the radix-4 Booth multiplier, excluding the pipeline stages.
 
-![Theoretical architecture](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/theoretical_architecture.png) 
+![Theoretical architecture](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/theoretical_architecture.png)
+
+## Verification
+
+This section describes the simulation of Radix-4 Modified Booth Multiplier circuit in VHDL using Wallace tree approach and pipelining technique.  
+The design was verified using the `Booth_mult_tb.vhd` testbench. This testbench is self-checking and uses assert statements to automatically report errors.
+The code is synthesized using Pynq-Z2 development board with device selected as xc7z0201-clg400.  
+
+### Simulation and Analysis Post-Implementation
     
-  
+Table below shows the utilization of hardware by the given MBM with pipelining.  
   
   
   
