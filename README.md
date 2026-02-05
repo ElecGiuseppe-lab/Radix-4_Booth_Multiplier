@@ -138,11 +138,14 @@ Table below shows the utilization of hardware by the given MBM with pipelining.
 ## Getting Started For Test
 
 ### Prerequisites
-- Xilinx Vivado Design Suite
-- Knowledge of VHDL
-- Basic understanding of signals and systems
+
+- Minimum 4GB RAM and a multi-core processor.
+- Xilinx Vivado Design Suite.
+- Knowledge of VHDL.
+- Basic understanding of signals and systems.
 
 ### Steps to Run the Project
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
@@ -151,7 +154,7 @@ Table below shows the utilization of hardware by the given MBM with pipelining.
 3. Add the provided VHDL source files (the VHDL source files are located in the `Booth_mult_optDynEn/src` directory).
 4. Add time constraint (the file is located in the `Booth_mult_optDynEn/constrs` directory).
 4. Run synthesis and implementation.
-5. Run post-implementation timing simulation (the corresponding testbench are in the `Booth_mult_optDynEn/sim` directory).
+5. Run post-implementation timing simulation and observe the output waveforms (the corresponding testbench are in the `Booth_mult_optDynEn/sim` directory).
 
   
 <!-- The link you click to go back to top -->
