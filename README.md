@@ -67,7 +67,7 @@ The **decoder**, i.e. a 5:1 multiplexer (MUX), receives as input all possible pr
 
 The Wallace tree uses Carry Save adders (3:2 compressor), rather than Ripple Carry adders, to accumulate partial products.  
 A 3:2 compressor, as shown in the figure below, consists of a chain of FAs that accepts three inputs and generates two outputs: a partial sum vector (VSP) and a carry vector (VR). Each sum bit is computed without waiting for the carry bit to propagate, which is instead output.  
-Subsequently, a logical left shift of VR is performed and the VSP is signed-extended so that the two vectors are aligned (this operation costs nothing in terms of time and resources).
+Subsequently, a logical **left shift of VR** is performed and the **VSP is signed-extended** so that the two vectors are aligned (this operation costs nothing in terms of time and resources).
 Since the sum and carry bits are computed in parallel due to no carry propagation, the computation time of VSP and VR at each level of the tree structure is equal to that of a single FA.
 
 ![3:2 Compressor](https://github.com/ElecGiuseppe-lab/Radix-4_Booth_Multiplier/blob/master/img/3_2_compressor_(CSA).png)
